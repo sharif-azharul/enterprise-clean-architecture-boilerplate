@@ -1,4 +1,5 @@
 
+using Enterprise.Api.Extensions;
 using Enterprise.Application;
 using Enterprise.Infrastructure;
 
@@ -29,7 +30,8 @@ namespace Enterprise.Api
             //    app.MapOpenApi();
             //}
 
-            app.UseHttpsRedirection(); 
+            app.UseHttpsRedirection();
+            app.UseCustomExceptionHandler();
 
             app.UseAuthorization();
 
