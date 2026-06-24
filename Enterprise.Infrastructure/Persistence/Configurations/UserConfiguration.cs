@@ -25,6 +25,8 @@ namespace Enterprise.Infrastructure.Persistence.Configurations
             builder.Property(x => x.LastName)
                 .HasMaxLength(100)
                 .IsRequired();
+            builder.HasIndex(x => x.Email)
+                    .IsUnique();
         }
     }
 }

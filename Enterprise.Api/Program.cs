@@ -33,6 +33,8 @@ namespace Enterprise.Api
             app.UseHttpsRedirection();
             app.UseCustomExceptionHandler();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseSwagger();
