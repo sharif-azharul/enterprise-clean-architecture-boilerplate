@@ -1,12 +1,14 @@
 ﻿using Enterprise.Application.Interfaces;
 using Enterprise.Application.Interfaces.Security;
+using Enterprise.Application.Interfaces.Services;
 using Enterprise.Infrastructure.Identity;
 using Enterprise.Infrastructure.Persistence.Contexts;
 using Enterprise.Infrastructure.Persistence.Repositories;
+using Enterprise.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,6 +34,9 @@ namespace Enterprise.Infrastructure
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddHttpContextAccessor();
+
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
         }

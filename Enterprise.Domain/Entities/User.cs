@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Enterprise.Domain.Entities
 {
-    public class User : BaseEntity
+    public class User : AuditableEntity
     {
         public string FirstName { get; set; } = string.Empty;
 

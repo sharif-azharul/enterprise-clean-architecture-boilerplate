@@ -42,8 +42,17 @@ namespace Enterprise.Infrastructure.Identity
 
             new(
                 JwtRegisteredClaimNames.Jti,
-                Guid.NewGuid().ToString())
-        };
+                Guid.NewGuid().ToString()),
+            
+                new(
+                ClaimTypes.NameIdentifier,
+                user.Id.ToString()),
+
+            new(
+                ClaimTypes.Email,
+                user.Email),
+            new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}")
+            };
 
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(
