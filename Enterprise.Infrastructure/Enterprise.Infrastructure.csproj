@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Persistence\Interceptors\**" />
+    <EmbeddedResource Remove="Persistence\Interceptors\**" />
+    <None Remove="Persistence\Interceptors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Enterprise.Application\Enterprise.Application.csproj" />
     <ProjectReference Include="..\Enterprise.Domain\Enterprise.Domain.csproj" />
   </ItemGroup>

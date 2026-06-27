@@ -22,10 +22,12 @@ namespace Enterprise.Infrastructure
                 this IServiceCollection services,
                 IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContext<AppDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
                     configuration.GetConnectionString("DefaultConnection"));
+                options.AddInterceptors(
+        sp.GetRequiredService<AuditSaveChangesInterceptor>());
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
@@ -37,7 +39,7 @@ namespace Enterprise.Infrastructure
             services.AddHttpContextAccessor();
 
             services.AddScoped<ICurrentUserService, CurrentUserService>();
-
+            services.AddScoped<AuditSaveChangesInterceptor>();
             return services;
         }
     }
