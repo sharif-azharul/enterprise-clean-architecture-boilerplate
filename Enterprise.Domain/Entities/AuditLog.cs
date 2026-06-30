@@ -14,6 +14,7 @@ namespace Enterprise.Domain.Entities
 
         public AuditType AuditType { get; set; }
 
+
         public string? OldValues { get; set; }
 
         public string? NewValues { get; set; }
